@@ -4,41 +4,40 @@ const cards = [...document.querySelectorAll(".product-card")];
 const filters = [...document.querySelectorAll(".filter")];
 const noResults = document.getElementById("noResults");
 
-let category = "all";
+let selectedCategory = "all";
 
-const contactEmail = "theplayzine2006@gmail.com";
-
-// Search and category filter
+// Search आणि category filters
 function updateProducts() {
-  const query = search ? search.value.trim().toLowerCase() : "";
-  let visible = 0;
+  const query = search.value.trim().toLowerCase();
+  let visibleCount = 0;
 
   cards.forEach(card => {
     const matchesCategory =
-      category === "all" || card.dataset.category === category;
+      selectedCategory === "all" ||
+      card.dataset.category === selectedCategory;
 
     const matchesSearch =
-      card.innerText.toLowerCase().includes(query);
+      card.textContent.toLowerCase().includes(query);
 
-    const show = matchesCategory && matchesSearch;
+    const visible = matchesCategory && matchesSearch;
 
-    card.hidden = !show;
+    card.hidden = !visible;
 
-    if (show) visible++;
+    if (visible) {
+      visibleCount++;
+    }
   });
 
-  if (noResults) {
-    noResults.hidden = visible > 0;
-  }
+  noResults.hidden = visibleCount > 0;
 }
 
-// Category buttons
+// Filter buttons
 filters.forEach(button => {
   button.addEventListener("click", () => {
-    category = button.dataset.filter;
+    selectedCategory = button.dataset.filter;
 
-    filters.forEach(item => {
-      item.classList.toggle("active", item === button);
+    filters.forEach(filter => {
+      filter.classList.toggle("active", filter === button);
     });
 
     updateProducts();
@@ -46,45 +45,9 @@ filters.forEach(button => {
 });
 
 // Search box
-if (search) {
-  search.addEventListener("input", updateProducts);
-}
+search.addEventListener("input", updateProducts);
 
-// Open Gmail in the current tab
-function openGmail(product) {
-  const subject = encodeURIComponent(
-    "Enquiry: " + (product || "Software")
-  );
-
-  const gmailUrl =
-    "https://mail.google.com/mail/?view=cm&fs=1" +
-    "&to=" + encodeURIComponent(contactEmail) +
-    "&su=" + subject;
-
-  window.location.href = gmailUrl;
-}
-
-// Product enquiry buttons
-document.querySelectorAll(".contact-product").forEach(link => {
-  link.addEventListener("click", event => {
-    event.preventDefault();
-
-    const product = link.dataset.product || "Software";
-    openGmail(product);
-  });
-});
-
-// Main Contact button
-const contactBtn = document.getElementById("contactBtn");
-
-if (contactBtn) {
-  contactBtn.addEventListener("click", event => {
-    event.preventDefault();
-    openGmail("Software Marketplace");
-  });
-}
-
-// Display current year
+// Footer मध्ये चालू वर्ष
 const yearElement = document.getElementById("year");
 
 if (yearElement) {
