@@ -8,8 +8,9 @@ let category = "all";
 
 const contactEmail = "theplayzine2006@gmail.com";
 
+// Search and category filter
 function updateProducts() {
-  const query = search.value.trim().toLowerCase();
+  const query = search ? search.value.trim().toLowerCase() : "";
   let visible = 0;
 
   cards.forEach(card => {
@@ -26,9 +27,12 @@ function updateProducts() {
     if (show) visible++;
   });
 
-  noResults.hidden = visible > 0;
+  if (noResults) {
+    noResults.hidden = visible > 0;
+  }
 }
 
+// Category buttons
 filters.forEach(button => {
   button.addEventListener("click", () => {
     category = button.dataset.filter;
@@ -41,28 +45,48 @@ filters.forEach(button => {
   });
 });
 
-search.addEventListener("input", updateProducts);
+// Search box
+if (search) {
+  search.addEventListener("input", updateProducts);
+}
 
+// Open Gmail in the current tab
+function openGmail(product) {
+  const subject = encodeURIComponent(
+    "Enquiry: " + (product || "Software")
+  );
+
+  const gmailUrl =
+    "https://mail.google.com/mail/?view=cm&fs=1" +
+    "&to=" + encodeURIComponent(contactEmail) +
+    "&su=" + subject;
+
+  window.location.href = gmailUrl;
+}
+
+// Product enquiry buttons
 document.querySelectorAll(".contact-product").forEach(link => {
-  link.addEventListener("click", () => {
-    const product = link.dataset.product || "Software";
+  link.addEventListener("click", event => {
+    event.preventDefault();
 
-    document.getElementById("contactBtn").href =
-      "mailto:" + contactEmail +
-      "?subject=" +
-      encodeURIComponent("Enquiry: " + product);
+    const product = link.dataset.product || "Software";
+    openGmail(product);
   });
 });
 
-// Contact button: default email
+// Main Contact button
 const contactBtn = document.getElementById("contactBtn");
 
 if (contactBtn) {
-  contactBtn.href =
-    "mailto:" + contactEmail +
-    "?subject=" +
-    encodeURIComponent("Software Marketplace Enquiry");
+  contactBtn.addEventListener("click", event => {
+    event.preventDefault();
+    openGmail("Software Marketplace");
+  });
 }
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+// Display current year
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
