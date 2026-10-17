@@ -6,7 +6,6 @@ const noResults = document.getElementById("noResults");
 
 let selectedCategory = "all";
 
-// Search आणि category filters
 function updateProducts() {
   const query = search.value.trim().toLowerCase();
   let visibleCount = 0;
@@ -31,7 +30,6 @@ function updateProducts() {
   noResults.hidden = visibleCount > 0;
 }
 
-// Filter buttons
 filters.forEach(button => {
   button.addEventListener("click", () => {
     selectedCategory = button.dataset.filter;
@@ -44,10 +42,8 @@ filters.forEach(button => {
   });
 });
 
-// Search box
 search.addEventListener("input", updateProducts);
 
-// Footer मध्ये चालू वर्ष
 const yearElement = document.getElementById("year");
 
 if (yearElement) {
