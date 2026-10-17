@@ -4,187 +4,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SoftHub Software Marketplace - Explore Windows desktop applications and web applications.">
   <title>SoftHub | Software Marketplace</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="navbar">
-    <a class="logo" href="#home">Soft<span>Hub</span></a>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#products">Software</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#home">Soft<span>Hub</span></a>
 
-    <a class="nav-btn" href="#products">Explore Software</a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Software</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="header-btn" href="#products">Explore Software</a>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="hero-content">
-        <span class="tag">YOUR SOFTWARE MARKETPLACE</span>
-
-        <h1>Powerful Software.<br>
-          <span>Smarter Business.</span>
-        </h1>
-
-        <p>
-          Discover useful Windows applications and web-based
-          software built to simplify your everyday work.
+      <div class="container hero-content">
+        <p class="eyebrow">WELCOME TO SOFTHUB</p>
+        <h1>Find the Right <span>Software</span> for Your Business</h1>
+        <p class="hero-description">
+          Explore useful Windows desktop applications and web applications
+          designed to make your work easier.
         </p>
-
-        <div class="hero-actions">
-          <a class="btn primary" href="#products">Explore Products →</a>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#products">Explore Software</a>
           <a class="btn secondary" href="#contact">Contact Us</a>
         </div>
-
-        <div class="stats">
-          <div><strong>Windows</strong><small>Desktop Apps</small></div>
-          <div><strong>Web Apps</strong><small>Browser Based</small></div>
-          <div><strong>Direct</strong><small>Developer Support</small></div>
+        <div class="hero-points">
+          <span>✓ Business Applications</span>
+          <span>✓ Desktop & Web Software</span>
+          <span>✓ Email Support</span>
         </div>
-      </div>
-
-      <div class="hero-art">
-        <div class="window">
-          <div class="window-bar">
-            <i></i><i></i><i></i>
-            <span>Software Studio</span>
-          </div>
-          <div class="window-body">
-            <div class="side"></div>
-            <div class="dashboard">
-              <div class="dash-title"></div>
-              <div class="dash-cards"><i></i><i></i><i></i></div>
-              <div class="dash-chart">
-                <b></b><b></b><b></b><b></b><b></b><b></b>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="float-card">✦ Built for productivity</div>
       </div>
     </section>
 
-    <section class="products section" id="products">
-      <div class="section-heading">
-        <div>
-          <span class="tag">OUR COLLECTION</span>
+    <section class="products-section" id="products">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">OUR COLLECTION</p>
           <h2>Explore Our Software</h2>
-          <p>Find the right tools for your business.</p>
+          <p>Find software that suits your needs and budget.</p>
         </div>
 
-        <input id="search" type="search" placeholder="Search software...">
+        <div class="search-box">
+          <input
+            type="search"
+            id="search"
+            placeholder="Search software..."
+            aria-label="Search software"
+          >
+        </div>
+
+        <div class="filters">
+          <button class="filter active" data-filter="all">All Software</button>
+          <button class="filter" data-filter="windows">Windows Apps</button>
+          <button class="filter" data-filter="web">Web Apps</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+
+          <article class="product-card" data-category="windows">
+            <div class="product-icon">📱</div>
+            <span class="product-type">Windows Application</span>
+            <h3>Mobile Shop Management</h3>
+            <p class="product-description">
+              Manage mobile products, customers, suppliers, stock, billing
+              and sales in one desktop application.
+            </p>
+            <ul class="features">
+              <li>Mobile stock management</li>
+              <li>Customer and supplier records</li>
+              <li>Billing and sales reports</li>
+            </ul>
+            <div class="price-row">
+              <span class="product-price">₹999</span>
+              <span class="price-label">Example price</span>
+            </div>
+            <div class="card-buttons">
+              <a class="btn buy-btn"
+                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=Purchase%20Enquiry%3A%20Mobile%20Shop%20Management">
+                Buy Now
+              </a>
+              <a class="btn enquire-btn"
+                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=Software%20Enquiry%3A%20Mobile%20Shop%20Management">
+                Enquire
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="web">
+            <div class="product-icon">📦</div>
+            <span class="product-type">Web Application</span>
+            <h3>Inventory Management</h3>
+            <p class="product-description">
+              Organize products, track available stock and manage inventory
+              records with ease.
+            </p>
+            <ul class="features">
+              <li>Product records</li>
+              <li>Stock tracking</li>
+              <li>Inventory overview</li>
+            </ul>
+            <div class="price-row">
+              <span class="product-price">₹499</span>
+              <span class="price-label">Example price</span>
+            </div>
+            <div class="card-buttons">
+              <a class="btn buy-btn"
+                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=Purchase%20Enquiry%3A%20Inventory%20Management">
+                Buy Now
+              </a>
+              <a class="btn enquire-btn"
+                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=Software%20Enquiry%3A%20Inventory%20Management">
+                Enquire
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="web">
+            <div class="product-icon">🧾</div>
+            <span class="product-type">Web Application</span>
+            <h3>Billing &amp; Sales System</h3>
+            <p class="product-description">
+              Organize sales records, prepare bills and review business
+              transactions using a simple application.
+            </p>
+            <ul class="features">
+              <li>Billing management</li>
+              <li>Sales records</li>
+              <li>Transaction summaries</li>
+            </ul>
+            <div class="price-row">
+              <span class="product-price">₹799</span>
+              <span class="price-label">Example price</span>
+            </div>
+            <div class="card-buttons">
+              <a class="btn buy-btn"
+                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=Purchase%20Enquiry%3A%20Billing%20and%20Sales%20System">
+                Buy Now
+              </a>
+              <a class="btn enquire-btn"
+                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=Software%20Enquiry%3A%20Billing%20and%20Sales%20System">
+                Enquire
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="windows">
+            <div class="product-icon">💻</div>
+            <span class="product-type">Windows Application</span>
+            <h3>Business Desktop Tools</h3>
+            <p class="product-description">
+              Useful desktop tools to help small businesses organize their
+              everyday work and records.
+            </p>
+            <ul class="features">
+              <li>Business record keeping</li>
+              <li>Organized information</li>
+              <li>Desktop-based workflow</li>
+            </ul>
+            <div class="price-row">
+              <span class="product-price">₹999</span>
+              <span class="price-label">Example price</span>
+            </div>
+            <div class="card-buttons">
+              <a class="btn buy-btn"
+                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=Purchase%20Enquiry%3A%20Business%20Desktop%20Tools">
+                Buy Now
+              </a>
+              <a class="btn enquire-btn"
+                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=Software%20Enquiry%3A%20Business%20Desktop%20Tools">
+                Enquire
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <p id="noResults" class="no-results" hidden>
+          No software found. Try another search.
+        </p>
+
+        <p class="notice">
+          Prices shown are examples. Confirm the final price, features,
+          compatibility and delivery with us before purchasing.
+        </p>
       </div>
-
-      <div class="filters">
-        <button class="filter active" data-filter="all">All Software</button>
-        <button class="filter" data-filter="windows">Windows Apps</button>
-        <button class="filter" data-filter="web">Web Applications</button>
-      </div>
-
-      <div class="product-grid" id="productGrid">
-        <article class="product-card" data-category="windows">
-          <div class="product-icon purple">▦</div>
-          <span class="product-type">WINDOWS APPLICATION</span>
-          <h3>Mobile Shop Management</h3>
-          <p>Manage mobiles, inventory, customers, sales and billing in one place.</p>
-          <div class="product-bottom">
-            <span>Windows Desktop</span>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=theplayzine2006%40gmail.com&su=Enquiry%3A%20Mobile%20Shop%20Management"
-               class="contact-product"
-               data-product="Mobile Shop Management">Enquire →</a>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="web">
-          <div class="product-icon blue">◈</div>
-          <span class="product-type">WEB APPLICATION</span>
-          <h3>Inventory Management</h3>
-          <p>Organize products, stock records and daily inventory activities.</p>
-          <div class="product-bottom">
-            <span>Web Based</span>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=theplayzine2006%40gmail.com&su=Enquiry%3A%20Inventory%20Management"
-               class="contact-product"
-               data-product="Inventory Management">Enquire →</a>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="web">
-          <div class="product-icon green">▤</div>
-          <span class="product-type">WEB APPLICATION</span>
-          <h3>Billing &amp; Sales System</h3>
-          <p>A simple solution for managing sales, bills and customer records.</p>
-          <div class="product-bottom">
-            <span>Web Based</span>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=theplayzine2006%40gmail.com&su=Enquiry%3A%20Billing%20and%20Sales%20System"
-               class="contact-product"
-               data-product="Billing and Sales System">Enquire →</a>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="windows">
-          <div class="product-icon orange">▣</div>
-          <span class="product-type">WINDOWS APPLICATION</span>
-          <h3>Business Desktop Tools</h3>
-          <p>Custom desktop software tailored to your business requirements.</p>
-          <div class="product-bottom">
-            <span>Windows Desktop</span>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=theplayzine2006%40gmail.com&su=Enquiry%3A%20Business%20Desktop%20Tools"
-               class="contact-product"
-               data-product="Business Desktop Tools">Enquire →</a>
-          </div>
-        </article>
-      </div>
-
-      <p id="noResults" hidden>No matching software found.</p>
-      <p class="notice">
-        Sample product listings — replace these with your actual software before selling.
-      </p>
     </section>
 
-    <section class="about section" id="about">
-      <span class="tag">WHY CHOOSE US</span>
-      <h2>Software That Works For You</h2>
-
-      <div class="benefits">
-        <div>
-          <strong>01. Practical Solutions</strong>
-          <p>Useful tools for real business needs.</p>
-        </div>
-        <div>
-          <strong>02. Personal Support</strong>
-          <p>Contact the developer to discuss your requirements.</p>
-        </div>
-        <div>
-          <strong>03. Custom Development</strong>
-          <p>Discuss software tailored to your workflow.</p>
-        </div>
+    <section class="about-section" id="about">
+      <div class="container about-content">
+        <p class="eyebrow">ABOUT SOFTHUB</p>
+        <h2>Software to Help Your Work</h2>
+        <p>
+          SoftHub is a software marketplace concept for discovering
+          Windows desktop applications and web applications. Contact us
+          to ask about product features, availability, demonstrations and pricing.
+        </p>
       </div>
     </section>
 
-    <section class="contact section" id="contact">
-      <span class="tag">LET'S CONNECT</span>
-      <h2>Interested in Our Software?</h2>
-      <p>Contact us for product details, demos and pricing.</p>
-
-      <a class="btn primary"
-         id="contactBtn"
-         href="https://mail.google.com/mail/?view=cm&fs=1&to=theplayzine2006%40gmail.com&su=Software%20Marketplace%20Enquiry">
-        Email for Enquiry →
-      </a>
-
-      <p class="notice">
-        Email: theplayzine2006@gmail.com
-      </p>
+    <section class="contact-section" id="contact">
+      <div class="container contact-box">
+        <div>
+          <p class="eyebrow">GET IN TOUCH</p>
+          <h2>Have a Software Enquiry?</h2>
+          <p>Contact us to discuss a product, pricing or a software project.</p>
+          <p class="email-address">theplayzine2006@gmail.com</p>
+        </div>
+        <a class="btn primary"
+           id="contactBtn"
+           href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=theplayzine2006%40gmail.com&amp;su=SoftHub%20Software%20Enquiry">
+          Email for Enquiry →
+        </a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <a class="logo" href="#home">Soft<span>Hub</span></a>
-    <p>© <span id="year"></span> SoftHub. All rights reserved.</p>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <a class="logo" href="#home">Soft<span>Hub</span></a>
+      <p>© <span id="year"></span> SoftHub Software Marketplace</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
   </footer>
 
   <script src="script.js"></script>
