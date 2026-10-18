@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoftHub Admin Panel</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 25px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+    }
+    h1 { color: #2563eb; }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 11px;
+      margin-top: 6px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font: inherit;
+    }
+    button, .back {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 6px;
+      color: white;
+      background: #2563eb;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .back { background: #475569; }
+    .warning {
+      padding: 12px;
+      background: #fff7ed;
+      border-radius: 6px;
+      line-height: 1.5;
+    }
+    #status { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>SoftHub Admin Panel</h1>
+
+    <p class="warning">
+      Demo only: changes are saved in this browser.
+      This is not a secure public admin system.
+    </p>
+
+    <form id="productForm">
+      <label for="product">Select Software</label>
+      <select id="product">
+        <option value="mobile">Mobile Shop Management</option>
+        <option value="inventory">Inventory Management</option>
+        <option value="billing">Billing &amp; Sales System</option>
+        <option value="business">Business Desktop Tools</option>
+      </select>
+
+      <label for="name">Software Name</label>
+      <input id="name" required maxlength="100">
+
+      <label for="price">Price (₹)</label>
+      <input id="price" type="number" min="0" step="1" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" rows="4" required maxlength="1000"></textarea>
+
+      <button type="submit">Save Product</button>
+      <button type="button" id="reset">Reset Form</button>
+    </form>
+
+    <p id="status" role="status"></p>
+    <a class="back" href="index.html">Back to Website</a>
+  </main>
+
+  <script>
+    const defaults = {
+      mobile: {
+        name: "Mobile Shop Management",
+        price: 999,
+        description: "Windows software for mobile shop management."
+      },
+      inventory: {
+        name: "Inventory Management",
+        price: 499,
+        description: "Web software for inventory management."
+      },
+      billing: {
+        name: "Billing & Sales System",
+        price: 799,
+        description: "Software for billing and sales management."
+      },
+      business: {
+        name: "Business Desktop Tools",
+        price: 999,
+        description: "Useful Windows desktop business tools."
+      }
+    };
+
+    const form = document.getElementById("productForm");
+    const select = document.getElementById("product");
+    const nameInput = document.getElementById("name");
+    const priceInput = document.getElementById("price");
+    const descriptionInput = document.getElementById("description");
+    const status = document.getElementById("status");
+
+    function getProducts() {
+      try {
+        return {
+          ...defaults,
+          ...JSON.parse(localStorage.getItem("softhubProducts") || "{}")
+        };
+      } catch {
+        return { ...defaults };
+      }
+    }
+
+    function loadProduct() {
+      const products = getProducts();
+      const product = products[select.value] || defaults[select.value];
+
+      nameInput.value = product.name;
+      priceInput.value = product.price;
+      descriptionInput.value = product.description;
+      status.textContent = "";
+    }
+
+    select.addEventListener("change", loadProduct);
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = nameInput.value.trim();
+      const price = Number(priceInput.value);
+      const description = descriptionInput.value.trim();
+
+      if (!name || !description || !Number.isFinite(price) || price < 0) {
+        status.textContent = "Please enter valid product details.";
+        return;
+      }
+
+      const products = getProducts();
+
+      products[select.value] = { name, price, description };
+
+      localStorage.setItem("softhubProducts", JSON.stringify(products));
+
+      status.textContent =
+        "Saved! Open the website in this same browser to see changes.";
+    });
+
+    document.getElementById("reset").addEventListener("click", loadProduct);
+
+    loadProduct();
+  </script>
+</body>
+</html>
